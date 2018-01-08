@@ -107,6 +107,11 @@ func main() {
 	// __Section: Pointers versus Values
 	// a copy of large structures
 	// thousands or possibly tens of thousands of copy.
+
+	// __Addition:
+	// compare two struct, it matter if this struct itself can be used as a key of map.
+	// this return true, means struct can compare with right sematic.
+	fmt.Println(Person{Name: "Me"} == Person{Name: "Me"})
 }
 
 func Super(s Saiyan) {

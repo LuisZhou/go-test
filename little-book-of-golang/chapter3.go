@@ -8,6 +8,11 @@ import (
 	"strings"
 )
 
+type Saiyan struct {
+	Name    string
+	Friends map[string]*Saiyan // the same struct.
+}
+
 func main() {
 	// ## Array
 	// In Go, arrays are fixed. Declaring an array requires that we specify the size, and once the size is specified,
@@ -130,6 +135,43 @@ func main() {
 	//copy(worst[2:4], scores_for_copy[1:5])
 	//copy(worst, scores_for_copy[1:50])   // just adapt to the size of 'worst'.
 	fmt.Println(worst)
+
+	// __Section:
+	lookup := make(map[string]int) // Must add 'map'
+	lookup["goku"] = 9001
+	power, exists := lookup["vegeta"]
+
+	// prints 0, false, 1
+	// 0 is the default value for an integer
+	fmt.Println(power, exists, len(lookup))
+
+	delete(lookup, "vegeta") // no matter if the key not exist.
+	//fmt.Println(len(lookup))
+
+	// lookup := make(map[string]int, 100) // performace better.
+
+	goku := &Saiyan{
+		Name:    "Goku",
+		Friends: make(map[string]*Saiyan),
+	}
+	goku.Friends["krillin"] = &Saiyan{
+		Name:    "krillin",
+		Friends: make(map[string]*Saiyan),
+	} //todo load or create Krillin
+
+	// another way to declare and initialize values in Go
+	// lookup := map[string]int{
+	// 	"goku": 9001,
+	// 	"gohan": 2044,
+	// }
+
+	// iterate
+	// Iteration over maps isn't ordered. Each iteration over a lookup will return the key value pair in a random order.
+	for key, value := range goku.Friends {
+		fmt.Println(key, value) // krillin &{krillin map[]}
+	}
+
+	// __Section: Pointers versus Values
 }
 
 // Just for unorder list.

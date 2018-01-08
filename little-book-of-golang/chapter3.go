@@ -10,7 +10,8 @@ import (
 
 func main() {
 	// ## Array
-	// In Go, arrays are fixed. Declaring an array requires that we specify the size, and once the size is specified, it cannot grow.
+	// In Go, arrays are fixed. Declaring an array requires that we specify the size, and once the size is specified,
+	// it cannot grow.
 	// var scores [10]int
 	// scores[0] = 339
 	scores := [4]int{9001, 9333, 212, 33}
@@ -27,7 +28,8 @@ func main() {
 	// A slice is a lightweight structure that wraps and represents a portion of an array.
 	// scores_slice := []int{1, 4, 293, 4, 9}
 
-	// We use make instead of new because there's more to creating a slice than just allocating the memory (which is what new does).
+	// We use make instead of new because there's more to creating a slice than just allocating the memory
+	// (which is what new does).
 	// Specifically, we have to allocate the memory for the underlying array and also initialize the slice.
 	// In the above, we initialize a slice with a length of 10 and a capacity of 10.
 	// The length is the size of the slice, the capacity is the size of the underlying array.
@@ -52,12 +54,14 @@ func main() {
 	fmt.Println(len(scores_slice_make2), cap(scores_slice_make2)) // 8, 10
 
 	// load and make is overload.
-	// Go is a language that, to the frustration of some, makes use of features which aren't exposed for developers to use.
+	// Go is a language that, to the frustration of some, makes use of features which aren't exposed for developers to use
 
 	// only way to expand the underlying array is use append.
 	// It turns out that append is pretty special. If the underlying array is full,
-	// it will create a new larger array and copy the values over (this is exactly how dynamic arrays work in PHP, Python, Ruby, JavaScript, ...).
-	// This is why, in the example above that used append, we had to __re-assign__ the value returned by append to our scores variable:
+	// it will create a new larger array and copy the values over (this is exactly how dynamic arrays work in PHP, Python,
+	// Ruby, JavaScript, ...).
+	// This is why, in the example above that used append, we had to __re-assign__ the value returned by append to our
+	// scores variable:
 	// append might have created a new value if the original had no more space.
 
 	scores_slice_make3 := make([]int, 0, 5)

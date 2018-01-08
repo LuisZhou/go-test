@@ -50,12 +50,14 @@ func main() {
 	fmt.Println(goku.Power) // 29000
 
 	// __Section: Constructors (factory pattern)
-	// Structures don't have constructors. Instead, you create a function that returns an instance of the desired type (like a factory)
+	// Structures don't have constructors. Instead, you create a function that returns an instance of the desired type
+	// (like a factory)
 	goku_using_factory := NewSaiyan("using_factory", 1000)
 	fmt.Println(goku_using_factory.Power) // 1000
 
 	// __Section: New
-	// Despite the lack of constructors, Go does have a built-in new function which is used to allocate the memory required by a type. The result of new(X) is the same as &X{}
+	// Despite the lack of constructors, Go does have a built-in new function which is used to allocate the memory
+	// required by a type. The result of new(X) is the same as &X{}
 	goku_using_new := new(Saiyan)
 	goku_using_new.Name = "using_new"
 	goku_using_new.Power = 9001
@@ -75,7 +77,8 @@ func main() {
 	// }
 
 	// __Section: Composition
-	// Go supports composition, which is the act of including one structure into another. In some languages, this is called a trait or a mixin.
+	// Go supports composition, which is the act of including one structure into another. In some languages, this is
+	// called a trait or a mixin.
 	goku_with_compose := &SaiyanComposePersion{
 		Person: &Person{"Goku"},
 		Power:  9001,
@@ -95,8 +98,10 @@ func main() {
 	// hierarchy rather than behavior.
 
 	// __Section: Overloading
-	// example: in go: load, loadById, loadByName. in other language with overloading: load(), load(int id), load(std:string& name)
-	// However, because implicit composition is really just a compiler trick, we can "overwrite" the functions of a composed type.
+	// example: in go: load, loadById, loadByName. in other language with overloading: load(), load(int id),
+	// load(std:string& name)
+	// However, because implicit composition is really just a compiler trick, we can "overwrite" the functions of a
+	// composed type.
 	goku_with_compose.Person.Introduce()
 
 	// __Section: Pointers versus Values
@@ -110,7 +115,8 @@ func Super(s Saiyan) {
 
 func SuperUsingPointer(s *Saiyan) {
 	s.Power += 10000 // use . too.
-	// s = &Saiyan{"Gohan", 1000} // if you do this, everything change to s is nothing to the value of before address which parater s point to.
+	// s = &Saiyan{"Gohan", 1000} // if you do this, everything change to s is nothing to the value of before address
+	// which parater s point to.
 }
 
 // *Saiyan is the receiver of the Super method

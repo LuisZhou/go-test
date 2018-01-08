@@ -172,6 +172,7 @@ func main() {
 	}
 
 	// __Section: Pointers versus Values
+	// However, what's being passed/returned is a copy of the slice, which itself is a reference (of the underlying array)
 }
 
 // Just for unorder list.

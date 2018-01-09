@@ -24,6 +24,9 @@ type SaiyanComposePersion struct {
 	// give it a field name
 }
 
+// __careful__
+// composer is easy to forget.
+
 func main() {
 	// __Section: Declarations and Initializations
 	goku := Saiyan{

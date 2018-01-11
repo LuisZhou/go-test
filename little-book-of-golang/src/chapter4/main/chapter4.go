@@ -26,6 +26,8 @@ type Logger interface {
 	Log(message string)
 }
 
+// interface{} empty interface.
+
 type ConsoleLogger struct{}
 
 func (l ConsoleLogger) Log(message string) {

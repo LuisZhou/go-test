@@ -8,13 +8,16 @@
 # ../install.sh test.go
 # the output exe name is desided by the file name.
 
-# BASEDIR=$(dirname "$0")
-# echo "$BASEDIR"
+#BASEDIR=$(dirname "$0")
+#echo "$BASEDIR"
 
-# $PWD
+#$PWD
+#echo $PWD 
 
-export GOPATH=/home/ubuntu/code/go/go-test/
-export GOBIN=/home/ubuntu/code/go/go-test/bin
+mkdir -p ./bin
+
+export GOPATH=$PWD/
+export GOBIN=$PWD/bin
 
 echo "build project.start" $(date +"%Y-%m-%d %H:%M:%S")
 

@@ -9,9 +9,10 @@ import (
 	"time"
 )
 
+// try telnet localhost 1200
 func main() {
 	service := ":1200"
-	tcpAddr, err := net.ResolveTCPAddr("ip4", service)
+	tcpAddr, err := net.ResolveTCPAddr("tcp", service)
 	checkError(err)
 
 	listener, err := net.ListenTCP("tcp", tcpAddr)
@@ -24,7 +25,7 @@ func main() {
 		}
 
 		daytime := time.Now().String()
-		// sync.
+		// a sync call.
 		// what is default max package size if we do not set it.
 		// we should checkout the returun size of write.
 		conn.Write([]byte(daytime)) // don't care about return value

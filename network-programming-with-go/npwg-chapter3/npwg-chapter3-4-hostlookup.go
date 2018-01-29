@@ -9,7 +9,7 @@ import (
 // example: ../../bin/npwg-chapter3-hostlookup www.baidu.com or
 // provide it a host name, like ubuntu
 
-// question: when lookup cname, it use port 53, why?
+// question: when lookup cname, it use port 53, why? -- DNS's port.
 
 func main() {
 	if len(os.Args) != 2 {

@@ -113,6 +113,9 @@ func ExampleSalutations() {
 // 3. It also provides a way to share common setup and tear-down code.
 // 4. Each subtest and sub-benchmark has a unique name: the combination of the name of the top-level test and the
 // 		sequence of names passed to Run, separated by slashes, with an optional trailing sequence number for disambiguation.
+// 5. The argument to the -run and -bench command-line flags is an unanchored regular expression that matches the test's name.
+//		(allow multi match, an empty expression matches any string)
+// 6. Subtests can also be used to control parallelism. A parent test will only complete once all of its subtests complete.
 
 // go test -run ''      # Run all tests.
 // go test -run Foo     # Run top-level tests matching "Foo", such as "TestFooBar".
@@ -124,6 +127,32 @@ func TestFoo(t *testing.T) {
 	t.Run("A=1", func(t *testing.T) { t.Log("A=1") })
 	t.Run("A=2", func(t *testing.T) { t.Log("A=2") })
 	t.Run("B=1", func(t *testing.T) { t.Log("B=2") })
+	// <tear-down code>
+}
+
+var tests = []struct {
+	Name string
+}{{"A"}}
+
+func TestGroupedParallel(t *testing.T) {
+	for _, tc := range tests {
+		tc := tc // capture range variable
+		t.Run(tc.Name, func(t *testing.T) {
+			t.Parallel()
+			t.Log("I'm here")
+		})
+	}
+}
+
+// Run does not return until parallel subtests have completed, providing a way to clean up after a group of parallel tests
+
+func TestTeardownParallel(t *testing.T) {
+	// This Run will not return until the parallel tests finish.
+	t.Run("group", func(t *testing.T) {
+		t.Run("Test1", func(t *testing.T) {})
+		t.Run("Test2", func(t *testing.T) {})
+		t.Run("Test3", func(t *testing.T) {})
+	})
 	// <tear-down code>
 }
 

@@ -9,9 +9,10 @@ import (
 
 // Doc
 // 1. https://golang.org/pkg/testing/
-// 2. go test help
+// 2. go test help (For more detail, run “go help test” and “go help testflag”)
 
-// use -run to select which test function.
+// use -run to select which test function, the name using regular expression, means, you don't need to copy total name of the
+// test.
 
 // 1. To write a new test suite, create a file whose name ends _test.go that contains the TestXxx functions as described
 //		here.

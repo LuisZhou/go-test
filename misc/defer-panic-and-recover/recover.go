@@ -11,21 +11,23 @@ import "fmt"
 // explicit error return values.
 
 func main() {
-	f()
-	fmt.Println("Returned normally from f.")
+	i := f()
+	fmt.Printf("Returned normally from f ret: %d.\n", i)
 }
 
-func f() {
+func f() (i int) {
 	// If we remove the deferred function from f the panic is not recovered and reaches the top of the goroutine's call
 	// stack, terminating the program. This modified program will output:
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Println("Recovered in f", r)
+			i = 2 // this make sense.
 		}
 	}()
 	fmt.Println("Calling g.")
 	g(0)
 	fmt.Println("Returned normally from g.")
+	return 1
 }
 
 func g(i int) {

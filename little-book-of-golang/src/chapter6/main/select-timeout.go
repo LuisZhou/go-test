@@ -26,6 +26,8 @@ func main() {
 		select {
 		case c <- i: // block to wait it
 		case <-time.After(time.Millisecond * 50): // block to wait it
+			// this may side effect, because this take time too.
+			// todo, this may be configurable.
 			fmt.Printf("timed out %d\n", i)
 		}
 		time.Sleep(time.Millisecond * 50)

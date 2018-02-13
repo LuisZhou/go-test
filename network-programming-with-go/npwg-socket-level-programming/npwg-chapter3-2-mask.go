@@ -6,6 +6,8 @@ import (
 	"os"
 )
 
+// todo: why it do not supports ipv6.
+
 func main() {
 	if len(os.Args) != 2 {
 		fmt.Fprintf(os.Stderr, "Usage: %s dotted-ip-addr\n", os.Args[0])

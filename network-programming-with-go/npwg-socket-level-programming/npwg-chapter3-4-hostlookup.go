@@ -41,6 +41,11 @@ func main() {
 
 	// CNAME records must always point to another domain name, never directly to an IP address.
 
+	// 	NAME                    TYPE   VALUE
+	// --------------------------------------------------
+	// bar.example.com.        CNAME  foo.example.com.
+	// foo.example.com.        A      192.0.2.23
+
 	cname, err := net.LookupCNAME(name)
 	if err != nil {
 		fmt.Println("Error: ", err.Error())

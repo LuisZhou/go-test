@@ -17,7 +17,7 @@ import (
 // 00 00 00 00 00 00 00 00 00 00 FF FF 7F 00 00 01
 // means this is ipv6	compatible.
 
-// IPV6 is composed by 16 bytes. we pair two byte as a group, so there are 8 group,
+// IPV6 is composed by 16 bytes (128 bit). we pair two byte as a group, so there are 8 group,
 // if some bytes missing, means it is zero.
 
 // another API is: net.IPv4Mask

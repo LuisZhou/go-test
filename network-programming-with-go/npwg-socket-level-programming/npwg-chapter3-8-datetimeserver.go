@@ -28,8 +28,9 @@ func main() {
 		// a sync call.
 		// what is default max package size if we do not set it.
 		// we should checkout the returun size of write.
-		conn.Write([]byte(daytime)) // don't care about return value
-		conn.Close()                // we're finished with this client
+		n, err := conn.Write([]byte(daytime)) // don't care about return value
+		conn.Close()                          // we're finished with this client
+		fmt.Printf("finish %d %s\n", n, err)
 	}
 }
 

@@ -14,6 +14,15 @@ import (
 // func (c *TCPConn) SetKeepAlive(keepalive bool) os.Error
 // useful for client.
 
+// const (
+//         Nanosecond  Duration = 1
+//         Microsecond          = 1000 * Nanosecond
+//         Millisecond          = 1000 * Microsecond
+//         Second               = 1000 * Millisecond
+//         Minute               = 60 * Second
+//         Hour                 = 60 * Minute
+// )
+
 func main() {
 	service := ":1201"
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", service)

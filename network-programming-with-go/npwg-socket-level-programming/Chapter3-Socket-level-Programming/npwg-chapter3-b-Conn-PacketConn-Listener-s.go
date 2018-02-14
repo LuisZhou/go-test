@@ -8,11 +8,12 @@ import (
 	"os"
 )
 
+// this is a echo server.
 // telnet localhost 1201
 
 func main() {
-
 	service := ":1200"
+	// careful here.
 	listener, err := net.Listen("tcp", service)
 	checkError(err)
 

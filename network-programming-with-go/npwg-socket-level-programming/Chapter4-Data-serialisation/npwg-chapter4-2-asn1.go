@@ -21,6 +21,15 @@ import (
 // func Marshal(val interface{}) ([]byte, os.Error)
 // func Unmarshal(val interface{}, b []byte) (rest []byte, err os.Error)
 
+// Given a variable of a type, we can marshal it by just passing its value. To unmarshall it, we need a variable of a
+// named type that will match the serialised data.
+
+// Any serialisation method will be able to handle certain data types and not handle some others.
+// ref: http://www.obj-sys.com/asn1tutorial/node4.html
+
+// BOOLEAN, INTEGER, BIT STRING, OCTET STRING, NULL, OBJECT IDENTIFIER, REAL, ENUMERATED, CHARACTER STRING
+// SEQUENCE, SEQUENCE OF, SET, SET OF, CHOICE, SELECTION, ANY
+
 type HelloWorld struct {
 	Name string
 }

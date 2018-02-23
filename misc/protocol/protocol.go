@@ -33,6 +33,13 @@ package main
 //
 // + read careful about the help of the protoc and protoc-gen-go.
 
+// how to write protocol
+// + package declaration
+//	 In Go, the package name is used as the Go package, unless you have specified a go_package. Even if you do provide a
+//	 go_package, you should still define a normal package as well to avoid name collisions in the Protocol Buffers name
+//	 space as well as in non-Go languages.
+// + have your message definitions
+
 func main() {
 
 }

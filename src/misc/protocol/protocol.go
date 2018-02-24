@@ -67,6 +67,106 @@ package main
 
 // question
 // + why 'go get -u github.com/golang/protobuf/protoc-gen-go' will install protoc-gen-go to $GOBIN?
-func main() {
+// + why we need to tell the compile the source code location: protoc -I=. --go_out=. ./addressbook.proto
+// + think about, why protocol use the pointer all the time.
 
+// The Protocol Buffer API
+
+// Generating addressbook.pb.go gives you the following useful types:
+//     An AddressBook structure with a People field.
+//     A Person structure with fields for Name, Id, Email and Phones.
+//     A Person_PhoneNumber structure, with fields for Number and Type.
+//     The type Person_PhoneType and a value defined for each value in the Person.PhoneType enum.
+
+// careful about enum, it will become const with name prefix by parent's name and underscope
+
+// c/c++ runtime normal use the option optimize_for = LITE_RUNTIME. for the lite version runtime is always smaller.
+
+import (
+	proto "github.com/golang/protobuf/proto"
+	"io/ioutil"
+	"log"
+	pb "misc/protocol/protocol"
+	"reflect"
+)
+
+func main() {
+	book := &pb.AddressBook{[]*pb.Person{ // repeat will become slice of pointer. why use pointer?
+		{
+			Name:  "John Doe",
+			Id:    101,
+			Email: "john@example.com",
+		},
+		{
+			Name: "Jane Doe",
+			Id:   102,
+		},
+		{
+			Name:  "Jack Doe",
+			Id:    201,
+			Email: "jack@example.com",
+			Phones: []*pb.Person_PhoneNumber{
+				{Number: "555-555-5555", Type: pb.Person_WORK},
+			},
+		},
+		{
+			Name:  "Jack Buck",
+			Id:    301,
+			Email: "buck@example.com",
+			Phones: []*pb.Person_PhoneNumber{
+				{Number: "555-555-0000", Type: pb.Person_HOME},
+				{Number: "555-555-0001", Type: pb.Person_MOBILE},
+				{Number: "555-555-0002", Type: pb.Person_WORK},
+			},
+		},
+		{
+			Name:  "Janet Doe",
+			Id:    1001,
+			Email: "janet@example.com",
+			Phones: []*pb.Person_PhoneNumber{
+				{Number: "555-777-0000"},
+				{Number: "555-777-0001", Type: pb.Person_HOME},
+			},
+		},
+	}}
+
+	type test struct{}
+
+	//var tmp *test = test{}
+	tmp := []*test{
+		{},
+	}
+
+	for _, c := range tmp {
+		log.Println(reflect.TypeOf(c))
+	}
+
+	//
+	// []byte{1, 2}
+	// []byte("abc")
+
+	out, err := proto.Marshal(book)
+	if err != nil {
+		log.Fatalln("Failed to encode address book:", err)
+	}
+	if err := ioutil.WriteFile("./bin/test", out, 0644); err != nil {
+		log.Fatalln("Failed to write address book:", err)
+	}
+
+	// read
+
+	in, err := ioutil.ReadFile("./bin/test")
+	if err != nil {
+		log.Fatalln("Error reading file:", err)
+	}
+	book = &pb.AddressBook{}
+	if err := proto.Unmarshal(in, book); err != nil {
+		log.Fatalln("Failed to parse address book:", err)
+	}
+
+	for _, c := range book.People {
+		log.Println(c)
+	}
+
+	log.Println("ok")
 }

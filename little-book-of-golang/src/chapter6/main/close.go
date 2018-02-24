@@ -13,5 +13,10 @@ func main() {
 	close(ch)
 	r, ok := <-ch      // read is just all right.
 	fmt.Println(r, ok) // 0 false, no block.
-	ch <- 1
+	// ch <- 1 // this will panic
+
+	ch2 := make(chan []byte)
+	close(ch2)
+	r2, ok2 := <-ch2     // read is just all right.
+	fmt.Println(r2, ok2) // 0 false, no block.
 }

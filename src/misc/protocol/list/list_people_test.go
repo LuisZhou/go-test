@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	pb "github.com/google/protobuf/examples/tutorial"
+	pb "misc/protocol/protocol"
 )
 
 func TestWritePersonWritesPerson(t *testing.T) {

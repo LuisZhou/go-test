@@ -32,6 +32,10 @@ package main
 //	 So the compile process is: protoc -> protoc-gen-go
 //
 // + read careful about the help of the protoc and protoc-gen-go.
+//
+// + if you get:
+//	 google/protobuf/timestamp.proto: File not found. just do:
+//	 sudo chmod 777 -R /usr/local/include/google/
 
 // how to write protocol
 // + package declaration
@@ -40,6 +44,29 @@ package main
 //	 space as well as in non-Go languages.
 // + have your message definitions
 
+//	 simple data types, using other message types
+
+//   You can even define message types nested inside other messages
+//	 also define enum types if you want one of your fields to have one of a predefined list of values
+
+//	 The " = 1", " = 2" markers on each element identify the unique "tag" that field uses in the binary encoding.
+//	 Tag numbers 1-15 require one less byte to encode than higher numbers, so as an optimization you can decide to use
+//	 those tags for the commonly used or repeated elements, leaving tags 16 and higher for less-commonly used optional
+//	 elements. Each element in a repeated field requires re-encoding the tag number, so repeated fields are particularly
+//	 good candidates for this optimization.
+
+//	 If a field value isn't set, a __default value__ is used: zero for numeric types, the empty string for strings, false
+//	 for bools. For embedded messages, the default value is always the "default instance" or "prototype" of the message,
+//	 which has none of its fields set. Calling the accessor to get the value of a field which has not been explicitly
+//	 set always returns that field's default value.
+
+// 	 __repeat__: If a field is repeated, the field may be repeated any number of times (including zero). The order of
+//	 the repeated values will be preserved in the protocol buffer. Think of repeated fields as dynamically sized arrays.
+
+//	 complete guide: https://developers.google.com/protocol-buffers/docs/proto3
+
+// question
+// + why 'go get -u github.com/golang/protobuf/protoc-gen-go' will install protoc-gen-go to $GOBIN?
 func main() {
 
 }

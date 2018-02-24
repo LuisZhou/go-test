@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	pb "github.com/google/protobuf/examples/tutorial"
+	pb "misc/protocol/protocol"
 )
 
 func TestPromptForAddressReturnsAddress(t *testing.T) {

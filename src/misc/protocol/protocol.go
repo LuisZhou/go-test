@@ -169,4 +169,7 @@ func main() {
 	}
 
 	log.Println("ok")
+
+	// ref
+	// https://godoc.org/github.com/golang/protobuf/proto
 }

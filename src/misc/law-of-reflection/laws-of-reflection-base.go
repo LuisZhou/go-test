@@ -97,4 +97,9 @@ func typeof(v interface{}) string {
 		_ = t
 		return "unknown"
 	}
+
+	// ref:
+	// https://stackoverflow.com/questions/7850140/how-do-you-create-a-new-instance-of-a-struct-from-its-type-at-run-time-in-go
+	// https://gobyexample.com
+	// https://golang.org/pkg/reflect/
 }

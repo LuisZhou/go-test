@@ -13,5 +13,6 @@ func main() {
 	// unpacked by the fmt package internally just as we have been doing in the previous examples.
 
 	// the empty interface value has the concrete value's type information inside and Printf will recover it.
+	// 1.000000 1.000000 1.0e+00
 	fmt.Printf("interface of value is %f %f %7.1e\n", v.Interface(), y, v.Interface())
 }

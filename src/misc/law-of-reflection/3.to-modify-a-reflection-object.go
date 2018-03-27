@@ -18,6 +18,9 @@ func main() {
 	v = reflect.ValueOf(x)
 	// we pass a value not a ptr.
 	// v.SetFloat(7.1) // Error: will panic.
+	// if the statement were allowed to succeed, it would not update x, even though v looks like it was created from x.
+	// Instead, it would update the copy of x stored inside the reflection value and x itself would be unaffected. That
+	// would be confusing and useless, so it is illegal, and settability is the property used to avoid this issue.
 
 	// Settability is a bit like addressability, but stricter. It's the property that a reflection object can modify the
 	// actual storage that was used to create the reflection object. Settability is determined by whether the reflection
@@ -36,6 +39,7 @@ func main() {
 	// p.SetFloat(7.1)
 	v = p.Elem()
 	fmt.Println("settability of v:", v.CanSet())
+	v.SetFloat(7.1)
 	fmt.Println(v.Interface())
 	fmt.Println(x1)
 
@@ -43,6 +47,15 @@ func main() {
 
 	// type Hello is not an expression
 	// v = reflect.ValueOf(Hello)
-	var ty interface{} = Hello
-	fmt.Println(ty.Name())
+	// var ty interface{} = Hello
+	// fmt.Println(ty.Name())
+
+	// Array, Chan, Map, Ptr, or Slice
+
+	// only interface type can do type assert.
+	// non-interface type reflect.Value on left
+	// msg := reflect.New(i).Interface()
+	// proto.Unmarshal(data, msg.(proto.Message))
+
+	// carefule, Value and Type has methed: Elem()
 }

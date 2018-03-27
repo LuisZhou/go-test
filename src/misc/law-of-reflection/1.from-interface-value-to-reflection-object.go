@@ -53,8 +53,9 @@ func main() {
 	fmt.Println("kind is uint8: ", v1.Kind() == reflect.Uint8) // true.
 	y = uint8(v1.Uint())                                       // v.Uint returns a uint64.
 
-	// careful of the Kind()
-
+	// Second, careful of the Kind()
+	// The second property is that the Kind of a reflection object describes the underlying type, not the static type.
+	// If a reflection object contains a value of a user-defined integer type, as in
 	type MyInt int
 	var x2 MyInt = 7
 	v2 := reflect.ValueOf(x2)                                      //x2 is MyInt

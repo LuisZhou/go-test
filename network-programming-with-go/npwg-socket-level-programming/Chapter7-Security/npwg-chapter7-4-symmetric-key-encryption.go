@@ -9,6 +9,8 @@ import (
 	"golang.org/x/crypto/blowfish"
 )
 
+// https://github.com/golang/crypto
+
 // uses a single key that is the same for both encryption and decryption.
 // there are many encryption algorithms.
 

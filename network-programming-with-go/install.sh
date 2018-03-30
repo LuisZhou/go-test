@@ -27,6 +27,8 @@ if [ $1 ]; then
 	TARGET=$1
 fi
 
+#https://stackoverflow.com/questions/10383299/how-do-i-configure-go-to-use-a-proxy
+#https://security.stackexchange.com/questions/80853/relationship-between-rsa-diffie-hellman-key-exchange-pki-and-x-509
 #http_proxy=127.0.0.1:8087 go get -insecure golang.org/x/crypto/blowfish
 go install -v -gcflags "-N -l" $TARGET
 

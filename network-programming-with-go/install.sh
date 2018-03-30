@@ -27,6 +27,7 @@ if [ $1 ]; then
 	TARGET=$1
 fi
 
+#http_proxy=127.0.0.1:8087 go get -insecure golang.org/x/crypto/blowfish
 go install -v -gcflags "-N -l" $TARGET
 
 echo "build project end  " $(date +"%Y-%m-%d %H:%M:%S")

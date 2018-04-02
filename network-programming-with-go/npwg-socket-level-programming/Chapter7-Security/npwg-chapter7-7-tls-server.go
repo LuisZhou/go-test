@@ -12,6 +12,7 @@ import (
 )
 
 func main() {
+	// public/private pair
 	cert, err := tls.LoadX509KeyPair("jan.newmarch.name.pem", "private.pem")
 	checkError(err)
 	config := tls.Config{Certificates: []tls.Certificate{cert}}

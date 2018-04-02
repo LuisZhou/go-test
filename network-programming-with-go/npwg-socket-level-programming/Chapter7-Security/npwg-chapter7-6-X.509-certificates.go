@@ -25,6 +25,10 @@ import (
 // An example program to generate a self-signed X.509 certificate for my web site and store it in a  .cer  file is
 
 // input is one private.key.
+// output is jan.newmarch.name.cer, jan.newmarch.name.pem, private.pem.
+
+// https://en.wikipedia.org/wiki/X.509#Certificate_filename_extensions
+// jan.newmarch.name.cer, jan.newmarch.name.pem is just encoding different.
 
 func main() {
 	random := rand.Reader

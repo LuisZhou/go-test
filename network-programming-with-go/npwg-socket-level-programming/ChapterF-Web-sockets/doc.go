@@ -7,6 +7,9 @@ package main
 // https://help.ubuntu.com/community/Mercurial
 // https://github.com/golang/go
 
+// https://godoc.org/golang.org/x/net/websocket
+// https://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-00
+
 func main() {
 
 }

@@ -27,7 +27,7 @@ if [ $1 ]; then
 	TARGET=$1
 fi
 
-go get github.com/golang/net
+# go get github.com/golang/net
 
 #https://stackoverflow.com/questions/10383299/how-do-i-configure-go-to-use-a-proxy
 #https://security.stackexchange.com/questions/80853/relationship-between-rsa-diffie-hellman-key-exchange-pki-and-x-509

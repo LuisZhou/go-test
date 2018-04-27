@@ -98,3 +98,35 @@ func TestPrefix(t *testing.T) {
 
 	t.Log(p)
 }
+
+// type User struct {
+// 	gorm.Model
+// 	Name string
+// 	Age  *int
+// }
+
+type ProductWithPointer struct {
+	gorm.Model
+	Code  string
+	Price *uint
+}
+
+func (ProductWithPointer) TableName() string {
+	return "products"
+}
+
+func TestZeroValue(t *testing.T) {
+	db, err := gorm.Open("sqlite3", "test.db")
+	if err != nil {
+		panic("failed to connect database")
+	}
+	defer db.Close()
+
+	db.LogMode(true)
+
+	i := uint(0)
+	products := make([]ProductWithPointer, 0)
+	db.Where(&ProductWithPointer{Price: &i}).Find(&products)
+
+	db.Where([]string{"BeforeCreate"}, "code").Find(&products)
+}

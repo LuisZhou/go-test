@@ -25,6 +25,7 @@ func main() {
 		if err != nil {
 			if err == io.EOF {
 				// graceful shutdown by server
+				fmt.Println("graceful shutdown by server")
 				break
 			}
 			fmt.Println("Couldn't receive msg " + err.Error())

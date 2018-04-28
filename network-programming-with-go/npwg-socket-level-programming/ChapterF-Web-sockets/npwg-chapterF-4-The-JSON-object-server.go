@@ -9,6 +9,11 @@ import (
 	"os"
 )
 
+// websocket clients and servers will exchange data in JSON format.
+// Go object will be marshalled into JSON format.
+// sent as a __UTF-8__ string.
+// the receiver will read this string and unmarshal it back into a object.
+
 type Person struct {
 	Name   string
 	Emails []string

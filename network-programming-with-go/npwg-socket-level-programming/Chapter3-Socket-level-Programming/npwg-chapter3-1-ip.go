@@ -19,6 +19,8 @@ import (
 
 // IPV6 is composed by 16 bytes (128 bit). we pair two byte as a group, so there are 8 group,
 // if some bytes missing, means it is zero.
+// 2001:0db8:0000:0000:0000:ff00:0042:8329
+// 16(bits per group) * 8(group) = 128 bit
 
 // another API is: net.IPv4Mask
 
@@ -26,6 +28,14 @@ import (
 // this output just: 'ff000000'
 // var mask net.IPMask = net.IPv4Mask(0xff, 0, 0, 0)
 // fmt.Println("test mask is ", mask.String())
+
+// class of network
+// https://en.wikipedia.org/wiki/Classful_network
+
+// why ipv6 have no mask?
+// The address is  fe80::ac09:44d5:ae90:4cfc
+// FE 80 00 00 00 00 00 00 AC 09 44 D5 AE 90 4C FC
+// default mask of the addr is <nil>
 
 func main() {
 	if len(os.Args) != 2 {

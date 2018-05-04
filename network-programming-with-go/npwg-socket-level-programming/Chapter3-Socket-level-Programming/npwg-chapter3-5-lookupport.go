@@ -10,7 +10,8 @@ import (
 )
 
 // example:
-// npwg-chapter3-lookupport tcp telnet
+// npwg-chapter3-5-lookupport tcp telnet
+// should app can register the port, like git ?
 
 func main() {
 	if len(os.Args) != 3 {

@@ -19,6 +19,19 @@ func main() {
 	name := os.Args[1]
 
 	// this may return ipv6 too, if it exist.
+
+	// todo: going on
+
+	// func LookupAddr(addr string) (names []string, err error)
+	// func LookupCNAME(host string) (cname string, err error)
+	// func LookupHost(host string) (addrs []string, err error)
+	// func LookupIP(host string) ([]IP, error)
+	// func LookupMX(name string) ([]*MX, error)
+	// func LookupNS(name string) ([]*NS, error)
+	// func LookupPort(network, service string) (port int, err error)
+	// func LookupSRV(service, proto, name string) (cname string, addrs []*SRV, err error)
+	// func LookupTXT(name string) ([]string, error)
+
 	addrs, err := net.LookupHost(name)
 	if err != nil {
 		fmt.Println("Error: ", err.Error())

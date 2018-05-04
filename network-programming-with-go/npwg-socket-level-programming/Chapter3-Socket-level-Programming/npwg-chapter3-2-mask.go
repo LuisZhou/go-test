@@ -6,7 +6,8 @@ import (
 	"os"
 )
 
-// todo: why it do not supports ipv6.
+// ./bin/npwg-chapter3-2-mask 2001:0:53aa:64c:18d0:a16f:48f1:7b28
+// ./bin/npwg-chapter3-2-mask 192.168.163.132
 
 func main() {
 	if len(os.Args) != 2 {
@@ -20,13 +21,13 @@ func main() {
 		fmt.Println("Invalid address")
 		os.Exit(1)
 	}
-	mask := addr.DefaultMask()
-	network := addr.Mask(mask)
+	mask := addr.DefaultMask() // return IP
+	network := addr.Mask(mask) // return IP
 	ones, bits := mask.Size()
 	fmt.Println("Address is ", addr.String(),
-		" Default mask length is ", bits,
-		"Leading ones count is ", ones,
-		"Mask is (hex) ", mask.String(),
-		" Network is ", network.String())
+		"\nDefault mask length is ", bits,
+		"\nLeading ones count is ", ones,
+		"\nMask is (hex) ", mask.String(),
+		"\nNetwork is ", network.String())
 	os.Exit(0)
 }
